@@ -4,116 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Δικηγορικό Γραφείο Βασιλικής Θεοδ. Ζαρκάδα</title>
-    <!-- Σύνδεση με FontAwesome για πανέμορφα εικονίδια -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root {
             --primary: #0a192f;
-            --primary-light: #172a45;
             --secondary: #c5a880;
-            --secondary-hover: #b3956b;
             --text-dark: #2d3748;
-            --text-light: #718096;
             --bg-light: #f7fafc;
             --white: #ffffff;
         }
-        
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
         body { color: var(--text-dark); line-height: 1.7; background-color: var(--white); padding-top: 80px; }
-        
-        /* Premium Μενού Πλοήγησης */
         header { background: var(--primary); position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border-bottom: 2px solid var(--secondary); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 15px 20px; }
-        .logo { color: var(--white); font-size: 1.4rem; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; transition: 0.3s; }
+        .logo { color: var(--white); font-size: 1.4rem; font-weight: 700; text-decoration: none; }
         .logo span { color: var(--secondary); font-weight: 400; }
-        .logo:hover { transform: scale(1.02); }
-        nav a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 0.95rem; font-weight: 500; transition: all 0.3s ease; position: relative; padding: 5px 0; }
+        nav a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--secondary); }
-        nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: var(--secondary); transition: width 0.3s ease; }
-        nav a:hover::after { width: 100%; }
-
-        /* Εντυπωσιακή Αρχική Σελίδα (Hero Section) */
-        #home { background: linear-gradient(rgba(10, 25, 47, 0.82), rgba(10, 25, 47, 0.82)), url('https://unsplash.com') no-repeat center center/cover; min-height: 85vh; display: flex; align-items: center; text-align: center; color: var(--white); max-width: 100%; padding: 40px 20px; }
-        .hero-content { max-width: 900px; margin: 0 auto; animation: fadeIn 1.2s ease-out; }
-        #home h1 { font-size: 3.2rem; margin-bottom: 25px; color: var(--white); font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.3); letter-spacing: 0.5px; }
-        #home p { font-size: 1.3rem; margin-bottom: 35px; color: #ccd6f6; font-weight: 300; max-width: 750px; margin-left: auto; margin-right: auto; }
-        .cta-btn { display: inline-block; background: transparent; color: var(--secondary); border: 2px solid var(--secondary); padding: 14px 40px; text-decoration: none; font-weight: bold; border-radius: 4px; font-size: 1.05rem; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .cta-btn:hover { background: var(--secondary); color: var(--primary); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(197, 168, 128, 0.4); }
-        
-        /* Κοινή Δομή Ενοτήτων */
-        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 50px; color: var(--primary); font-size: 2.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 3px; background: var(--secondary); margin: 15px auto 0 auto; border-radius: 2px; }
-
-        /* Γραφικά στις Κάρτες Υπηρεσιών */
+        #home { background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://unsplash.com') no-repeat center center/cover; min-height: 75vh; display: flex; align-items: center; text-align: center; color: var(--white); padding: 40px 20px; }
+        .hero-content { max-width: 900px; margin: 0 auto; }
+        #home h1 { font-size: 3rem; margin-bottom: 25px; color: var(--white); }
+        #home p { font-size: 1.25rem; margin-bottom: 35px; color: #ccd6f6; }
+        .cta-btn { display: inline-block; background: transparent; color: var(--secondary); border: 2px solid var(--secondary); padding: 14px 40px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; }
+        .cta-btn:hover { background: var(--secondary); color: var(--primary); }
+        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 50px; color: var(--primary); font-size: 2.2rem; font-weight: 700; }
+        .section-title::after { content: ''; display: block; width: 80px; height: 3px; background: var(--secondary); margin: 15px auto 0 auto; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; margin-bottom: 50px; }
-        .service-card { background: var(--white); padding: 40px 30px; border-radius: 8px; border: 1px solid #e2e8f0; border-top: 5px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative; overflow: hidden; }
-        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(10, 25, 47, 0.08); border-top-color: var(--secondary); }
-        .card-icon { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; display: inline-block; }
-        .service-card h3 { margin-bottom: 20px; color: var(--primary); font-size: 1.4rem; font-weight: 600; }
+        .service-card { background: var(--white); padding: 40px 30px; border-radius: 8px; border: 1px solid #e2e8f0; border-top: 5px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.04); transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); }
+        .card-icon { font-size: 2.5rem; color: var(--secondary); margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 20px; color: var(--primary); font-size: 1.4rem; }
         .service-card ul { list-style-type: none; }
-        .service-card ul li { padding: 8px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: flex-start; }
-        .service-card ul li i { color: var(--secondary); margin-right: 12px; margin-top: 6px; font-size: 0.9rem; }
-        .service-card p { color: var(--text-light); font-size: 1.05rem; }
-        
-        /* Μοντέρνα Tags για τις Επιπλέον Υπηρεσίες */
-        .extra-services { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); padding: 50px 40px; border-radius: 8px; text-align: center; box-shadow: 0 12px 40px rgba(10, 25, 47, 0.15); border: 1px solid rgba(255,255,255,0.05); }
-        .extra-services h3 { color: var(--secondary); margin-bottom: 25px; font-size: 1.5rem; font-weight: 600; letter-spacing: 0.5px; }
+        .service-card ul li { padding: 8px 0; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
+        .service-card ul li i { color: var(--secondary); }
+        .extra-services { background: var(--primary); color: var(--white); padding: 50px 40px; border-radius: 8px; text-align: center; }
+        .extra-services h3 { color: var(--secondary); margin-bottom: 25px; font-size: 1.5rem; }
         .extra-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .tag { background: rgba(255,255,255,0.08); padding: 10px 22px; border-radius: 30px; font-size: 1rem; border: 1px solid rgba(255,255,255,0.1); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
-        .tag i { color: var(--secondary); }
-        .tag:hover { background: var(--secondary); color: var(--primary); font-weight: 600; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(197, 168, 128, 0.3); border-color: var(--secondary); }
-
-        /* Κομψό Προφίλ */
-        #profile { background: var(--bg-light); max-width: 100%; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; }
-        .profile-content { max-width: 850px; margin: 0 auto; text-align: center; font-size: 1.2rem; color: #4a5568; background: var(--white); padding: 50px 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border-left: 5px solid var(--secondary); }
-        .profile-content i { font-size: 2rem; color: var(--secondary); margin-bottom: 20px; display: block; opacity: 0.7; }
-
-        /* Μοντέρνα Επικοινωνία & Φόρμα */
+        .tag { background: rgba(255,255,255,0.08); padding: 10px 22px; border-radius: 30px; font-size: 1rem; }
+        #profile { background: var(--bg-light); max-width: 100%; }
+        .profile-content { max-width: 850px; margin: 0 auto; text-align: center; font-size: 1.2rem; color: #4a5568; background: var(--white); padding: 50px 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .contact-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
-        .contact-info { background: linear-gradient(to bottom right, var(--bg-light), var(--white)); padding: 40px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .contact-info h3 { color: var(--primary); margin-bottom: 25px; font-size: 1.4rem; position: relative; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
-        .contact-info p { margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; color: var(--text-dark); }
-        .contact-info p i { color: var(--secondary); font-size: 1.3rem; width: 25px; text-align: center; }
-        
-        .contact-form { background: var(--white); padding: 10px; }
-        .form-group { position: relative; margin-bottom: 20px; }
-        .form-group i { position: absolute; left: 15px; top: 15px; color: var(--text-light); transition: 0.3s; }
-        .contact-form input, .contact-form textarea { width: 100%; padding: 12px 12px 12px 45px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; transition: all 0.3s ease; background: var(--bg-light); }
-        .contact-form textarea { padding-left: 45px; resize: none; }
-        .contact-form input:focus, .contact-form textarea:focus { border-color: var(--primary); background: var(--white); outline: none; box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1); }
-        .contact-form input:focus + i, .contact-form textarea:focus + i { color: var(--primary); }
-        .contact-form button { background: var(--primary); color: var(--white); padding: 14px; border: none; width: 100%; cursor: pointer; font-weight: 700; border-radius: 6px; font-size: 1.05rem; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(10, 25, 47, 0.15); }
-        .contact-form button:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: 0 6px 18px rgba(10, 25, 47, 0.25); }
-        
-        /* Premium Footer */
-        footer { background: var(--primary); color: var(--white); text-align: center; padding: 30px; margin-top: 50px; font-size: 0.95rem; border-top: 3px solid var(--secondary); }
-        footer p { opacity: 0.8; letter-spacing: 0.5px; }
-
-        /* Animation Keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Responsive για Κινητά */
-        @media (max-width: 900px) {
-            .contact-container { grid-template-columns: 1fr; gap: 30px; }
-        }
+        .contact-info { background: var(--bg-light); padding: 40px; border-radius: 8px; }
+        .contact-info h3 { color: var(--primary); margin-bottom: 25px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        .contact-info p { margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 15px; }
+        .contact-info p i { color: var(--secondary); }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; }
+        .contact-form button { background: var(--primary); color: var(--white); padding: 14px; border: none; width: 100%; cursor: pointer; font-weight: 700; border-radius: 6px; font-size: 1.05rem; }
+        footer { background: var(--primary); color: var(--white); text-align: center; padding: 30px; margin-top: 50px; border-top: 3px solid var(--secondary); }
         @media (max-width: 768px) { 
             body { padding-top: 130px; }
-            .nav-container { flex-direction: column; text-align: center; padding: 10px 20px; }
+            .nav-container { flex-direction: column; text-align: center; }
             nav { margin-top: 15px; }
-            nav a { margin: 0 10px; font-size: 0.9rem; }
-            #home h1 { font-size: 2.2rem; }
-            #home p { font-size: 1.1rem; }
-            section { padding: 60px 20px; }
+            nav a { margin: 0 10px; }
+            .contact-container { grid-template-columns: 1fr; } 
         }
     </style>
 </head>
 <body>
 
-    <!-- Premium Μενού -->
     <header>
         <div class="nav-container">
             <a href="#home" class="logo">Βασιλική Θ. Ζαρκάδα<span> & Συνεργάτες</span></a>
@@ -121,3 +70,79 @@
                 <a href="#home">Αρχική</a>
                 <a href="#services">Υπηρεσίες</a>
                 <a href="#profile">Προφίλ</a>
+                <a href="#contact">Επικοινωνία</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Δικηγορικό Γραφείο Βασιλικής Θεοδ. Ζαρκάδα</h1>
+            <p>Εξειδικευμένες νομικές υπηρεσίες με συνέπεια, επαγγελματισμό και απόλυτη αφοσίωση στον εντολέα.</p>
+            <a href="#contact" class="cta-btn">Προγραμματίστε Ραντεβού</a>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Νομικές Υπηρεσίες</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="card-icon"><i class="fa-solid fa-gavel"></i></div>
+                <h3>Αστικό Δίκαιο</h3>
+                <ul>
+                    <li><i class="fa-solid fa-chevron-right"></i> <strong>Θέματα Κτηματολογίου</strong></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Αγοραπωλησίες & Μεταβιβάσεις Ακινήτων</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Δικαστική Συμπαράσταση</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Αγωγές περί νομής & Μισθωτικές Διαφορές</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Διαζύγια (Συναινετικά / κατ' αντιδικία)</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Θέματα Επιμέλειας, Διατροφής & Κληρονομικού</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Υπερχρεωμένα Νοικοκυριά (Νόμος Κατσέλη)</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Διαφορές από αδικοπραξία (Αποζημιώσεις)</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>Εμπορικό Δίκαιο</h3>
+                <ul>
+                    <li><i class="fa-solid fa-chevron-right"></i> Δίκαιο Εμπορικών Εταιρειών</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Εμπορικές Συμβάσεις</li>
+                    <li><i class="fa-solid fa-chevron-right"></i> Διαφορές από επιταγές & συναλλαγματικές</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>Ποινικό Δίκαιο</h3>
+                <p>Με εξειδικευμένη γνώση, συνεχή επιμόρφωση και συμμετοχή σε συνέδρια από κορυφαίους καθηγητές, διαθέτουμε τα απαραίτητα γνωστικά εφόδια για την έγκυρη ποινική σας εκπροσώπηση.</p>
+            </div>
+        </div>
+        <div class="extra-services">
+            <h3>Επιπλέον Τομείς Δραστηριότητας</h3>
+            <div class="extra-tags">
+                <div class="tag">Θέματα Αλλοδαπών</div>
+                <div class="tag">Εργατικές Διαφορές</div>
+                <div class="tag">Προσφυγές Διοικητικού Πρωτοδικείου</div>
+                <div class="tag">Μεταφράσεις (Ελληνικά / Αγγλικά)</div>
+                <div class="tag">Επικυρώσεις Εγγράφων</div>
+                <div class="tag">Έρευνες Ακίνητης Περιουσίας</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile">
+        <h2 class="section-title">Προφίλ</h2>
+        <div class="profile-content">
+            <p>Καλώς ήρθατε στο διαδικτυακό τόπο του γραφείου μας. Ο κόσμος μας αλλάζει με γρήγορα βήματα και οι ανάγκες των πολιτών για έγκυρη νομική καθοδήγηση γίνονται όλο και πιο επιτακτικές. Στόχος μας είναι η παροχή υψηλού επιπέδου νομικών υπηρεσιών με γνώμονα την εχεμύθεια, την ειλικρίνεια και την προσωπική ενασχόληση με κάθε υπόθεση.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Επικοινωνία</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Στοιχεία Γραφείου</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Έσλιν 19, 35132, Λαμία</p>
+                <p><i class="fa-solid fa-phone"></i> 6949142270</p>
+                <p><i class="fa-solid fa-clock"></i> Δευτέρα έως Παρασκευή: 9.00 - 14.00 και Δευτέρα έως Πέμπτη: 19.00-21.00 κατόπιν Ραντεβού</p>
+            </div>
+            <div class="contact-form">
+                <form>
