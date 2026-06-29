@@ -5,62 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Δικηγορικό Γραφείο Βασιλικής Θεοδ. Ζαρκάδα</title>
     <style>
-        :root { --primary: #0a192f; --secondary: #c5a880; --text: #333333; --bg-light: #f8f9fa; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { color: var(--text); line-height: 1.6; }
-        header { background: var(--primary); position: fixed; width: 100%; top: 0; z-index: 1000; padding: 15px 0; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .logo { color: #fff; font-weight: bold; }
+        :root {
+            --primary: #0a192f;
+            --secondary: #c5a880;
+            --text: #333333;
+            --bg-light: #f8f9fa;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
+        body { color: var(--text); line-height: 1.6; background-color: #fff; padding-top: 70px; }
+        
+        header { background: var(--primary); position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 20px; }
+        .logo { color: #fff; font-size: 1.3rem; font-weight: bold; text-decoration: none; }
         .logo span { color: var(--secondary); }
-        nav a { color: #fff; text-decoration: none; margin-left: 15px; font-size: 0.9rem; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--secondary); }
+
         section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 30px; color: var(--primary); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .service-card { background: var(--bg-light); padding: 20px; border-radius: 4px; border-left: 4px solid var(--secondary); }
-        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        @media (max-width: 768px) { .contact-container { grid-template-columns: 1fr; } }
+        .section-title { text-align: center; margin-bottom: 40px; color: var(--primary); font-size: 2rem; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: var(--secondary); margin: 10px auto 0 auto; }
+
+        #home { background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://unsplash.com') no-repeat center center/cover; min-height: 80vh; display: flex; align-items: center; text-align: center; color: #fff; max-width: 100%; }
+        .hero-content { max-width: 850px; margin: 0 auto; width: 100%; }
+        #home h1 { font-size: 2.8rem; margin-bottom: 25px; color: #fff; font-weight: 600; }
+        #home p { font-size: 1.2rem; margin-bottom: 30px; color: #ccd6f6; }
+        .cta-btn { display: inline-block; background: var(--secondary); color: var(--primary); padding: 12px 35px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; }
+        .cta-btn:hover { background: #b3956b; color: #fff; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
+        .service-card { background: var(--bg-light); padding: 30px; border-radius: 4px; border-top: 4px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .service-card h3 { margin-bottom: 20px; color: var(--primary); font-size: 1.3rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+        .service-card ul { list-style-type: none; }
+        .service-card ul li { padding: 6px 0; font-size: 1rem; color: #4a5568; position: relative; padding-left: 15px; }
+        .service-card ul li::before { content: "•"; color: var(--secondary); font-weight: bold; position: absolute; left: 0; }
+        
+        .extra-services { background: var(--primary); color: #fff; padding: 40px; border-radius: 4px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .extra-services h3 { color: var(--secondary); margin-bottom: 20px; font-size: 1.4rem; }
+        .extra-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .tag { background: rgba(255,255,255,0.1); padding: 8px 18px; border-radius: 20px; font-size: 0.95rem; transition: 0.3s; }
+        .tag:hover { background: var(--secondary); color: var(--primary); font-weight: bold; }
+
+        #profile { background: var(--bg-light); max-width: 100%; }
+        .profile-content { max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.15rem; color: #4a5568; }
+
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-info { background: var(--bg-light); padding: 30px; border-radius: 4px; }
+        .contact-info h3 { color: var(--primary); margin-bottom: 20px; }
+        .contact-info p { margin-bottom: 15px; font-size: 1.05rem; }
+        .contact-form { background: #fff; padding: 20px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 1rem; }
+        .contact-form button { background: var(--primary); color: #fff; padding: 12px; border: none; width: 100%; cursor: pointer; font-weight: bold; border-radius: 4px; font-size: 1rem; transition: 0.3s; }
+        .contact-form button:hover { background: #12284c; }
+        
+        footer { background: var(--primary); color: #fff; text-align: center; padding: 25px; margin-top: 40px; font-size: 0.95rem; }
+        @media (max-width: 768px) { 
+            .nav-container { flex-direction: column; text-align: center; }
+            nav { margin-top: 15px; }
+            nav a { margin: 0 10px; }
+            .contact-container { grid-template-columns: 1fr; } 
+            #home h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <div class="nav-container">
-            <div class="logo">Βασιλική Θ. Ζαρκάδα</div>
-            <nav><a href="#services">Υπηρεσίες</a><a href="#profile">Προφίλ</a><a href="#contact">Επικοινωνία</a></nav>
+            <a href="#home" class="logo">Βασιλική Θ. Ζαρκάδα<span> & Συνεργάτες</span></a>
+            <nav>
+                <a href="#home">Αρχική</a>
+                <a href="#services">Υπηρεσίες</a>
+                <a href="#profile">Προφίλ</a>
+                <a href="#contact">Επικοινωνία</a>
+            </nav>
         </div>
     </header>
-    <section id="services" style="margin-top:60px;">
+
+    <section id="home">
+        <div class="hero-content">
+            <h1>Δικηγορικό Γραφείο Βασιλικής Θεοδ. Ζαρκάδα</h1>
+            <p>Εξειδικευμένες νομικές υπηρεσίες με συνέπεια, επαγγελματισμό και απόλυτη αφοσίωση στον εντολέα.</p>
+            <a href="#contact" class="cta-btn">Επικοινωνία</a>
+        </div>
+    </section>
+
+    <section id="services">
         <h2 class="section-title">Νομικές Υπηρεσίες</h2>
         <div class="services-grid">
             <div class="service-card">
                 <h3>Αστικό Δίκαιο</h3>
                 <ul>
                     <li><strong>Θέματα Κτηματολογίου</strong></li>
-                    <li>Αγοραπωλησίες & Μεταβιβάσεις</li>
-                    <li>Οικογενειακό & Κληρονομικό</li>
+                    <li>Αγοραπωλησίες & Μεταβιβάσεις Ακινήτων</li>
+                    <li>Δικαστική Συμπαράσταση</li>
+                    <li>Αγωγές περί νομής & Μισθωτικές Διαφορές</li>
+                    <li>Διαζύγια (Συναινετικά / κατ' αντιδικία)</li>
+                    <li>Θέματα Επιμέλειας, Διατροφής & Κληρονομικού</li>
+                    <li>Υπερχρεωμένα Νοικοκυριά (Νόμος Κατσέλη)</li>
+                    <li>Διαφορές από αδικοπραξία (Αποζημιώσεις)</li>
                 </ul>
             </div>
             <div class="service-card">
                 <h3>Εμπορικό Δίκαιο</h3>
                 <ul>
-                    <li>Εταιρικό Δίκαιο</li>
-                    <li>Συμβάσεις</li>
+                    <li>Δίκαιο Εμπορικών Εταιρειών</li>
+                    <li>Εμπορικές Συμβάσεις</li>
+                    <li>Διαφορές από επιταγές & συναλλαγματικές</li>
                 </ul>
             </div>
             <div class="service-card">
                 <h3>Ποινικό Δίκαιο</h3>
-                <p>Εξειδικευμένη υπεράσπιση.</p>
+                <p>Με εξειδικευμένη γνώση, συνεχή επιμόρφωση και συμμετοχή σε συνέδρια από κορυφαίους καθηγητές, διαθέτουμε τα απαραίτητα γνωστικά εφόδια για την έγκυρη ποινική σας εκπροσώπηση και υπεράσπιση.</p>
+            </div>
+        </div>
+        
+        <div class="extra-services">
+            <h3>Επιπλέον Τομείς Δραστηριότητας</h3>
+            <div class="extra-tags">
+                <span class="tag">Θέματα Αλλοδαπών</span>
+                <span class="tag">Εργατικές Διαφορές</span>
+                <span class="tag">Προσφυγές Διοικητικού Πρωτοδικείου</span>
+                <span class="tag">Μεταφράσεις (Ελληνικά / Αγγλικά)</span>
+                <span class="tag">Επικυρώσεις Εγγράφων</span>
+                <span class="tag">Έρευνες Ακίνητης Περιουσίας</span>
             </div>
         </div>
     </section>
+
+    <section id="profile">
+        <h2 class="section-title">Προφίλ</h2>
+        <div class="profile-content">
+            <p>Καλώς ήρθατε στο διαδικτυακό τόπο του γραφείου μας. Ο κόσμος μας αλλάζει με γρήγορα βήματα και οι ανάγκες των πολιτών για έγκυρη νομική καθοδήγηση γίνονται όλο και πιο επιτακτικές. Στόχος μας είναι η παροχή υψηλού επιπέδου νομικών υπηρεσιών με γνώμονα την εχεμύθεια, την ειλικρίνεια και την προσωπική ενασχόληση με κάθε υπόθεση, προσφέροντας ρεαλιστικές λύσεις προσαρμοσμένες στις ανάγκες σας.</p>
+        </div>
+    </section>
+
     <section id="contact">
         <h2 class="section-title">Επικοινωνία</h2>
         <div class="contact-container">
-            <div>
-                <p>📍 Λαμία</p>
-                <p>📞 [Συμπλήρωσε το Τηλέφωνό σου]</p>
+            <div class="contact-info">
+                <h3>Στοιχεία Γραφείου</h3>
+                <p><strong>📍 Διεύθυνση:</strong> Έσλιν, 35132, Λαμία</p>
+                <p><strong>📞 Τηλέφωνο:</strong> 6949142270</p>
+                <p><strong>✉️ Email:</strong> [Συμπλήρωσε το Email σου]</p>
+                <p><strong>🕒 Ωράριο:</strong> Κατόπιν Ραντεβού</p>
             </div>
-            <form><input type="text" placeholder="Όνομα" style="width:100%;margin-bottom:10px;"><textarea placeholder="Μήνυμα" style="width:100%;margin-bottom:10px;"></textarea><button type="submit">Αποστολή</button></form>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <input type="text" placeholder="Ονοματεπώνυμο" required>
+                    <input type="email" placeholder="Email Επικοινωνίας" required>
+                    <textarea rows="4" placeholder="Το μήνυμά σας..." required></textarea>
+                    <button type="submit">Αποστολή Μηνύματος</button>
+                </form>
+            </div>
         </div>
     </section>
+
+    <footer>
+        <p>&copy; 2026 Δικηγορικό Γραφείο Βασιλικής Θεοδ. Ζαρκάδα. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
